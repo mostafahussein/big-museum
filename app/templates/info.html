@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <p id="error_msg" class="bg-danger hidden"></p>
+    <p id="success_msg" class="bg-success hidden">Parsing successfully done</p>
+
+    <h1><i>"{{ filename }}"</i> parsing</h1>
+
+    <div id="items">
+        <label>Items processed</label>
+        <span>0</span>
+    </div>
+    <div id="fulness" class="hidden">
+        <label>Fulness</label>
+        <span></span> %
+    </div>
+{% endblock %}
+
+{% block css %}
+    <link type="text/css" href="{{ url_for('static', filename='info.css') }}"/>
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', filename='info.js') }}"></script>
+    <script>
+        task_status_poller('{{ url_for('status', task_id=task_id) }}');
+    </script>
+{% endblock %}
