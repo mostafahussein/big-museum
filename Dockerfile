@@ -6,13 +6,13 @@ RUN apt-get update
 RUN apt-get -y install nginx sed python-pip python-dev uwsgi-plugin-python supervisor wget
 RUN wget http://download.redis.io/redis-stable.tar.gz; tar xvzf redis-stable.tar.gz; cd redis-stable; make; make install
 
-RUN mkdir -p /var/log/nginx/app/
+RUN mkdir -p /var/log/nginx/
 RUN mkdir -p /var/log/uwsgi/
 RUN mkdir -p /var/log/celery/
 
 RUN rm /etc/nginx/sites-enabled/default
-COPY flask.conf /etc/nginx/sites-available/
-RUN ln -s /etc/nginx/sites-available/flask.conf /etc/nginx/sites-enabled/flask.conf
+COPY nginx.conf /etc/nginx/sites-available/
+RUN ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
 COPY uwsgi.ini /var/www/app/
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
