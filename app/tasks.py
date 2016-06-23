@@ -1,5 +1,4 @@
 import xml.etree.ElementTree as etree
-import os
 
 import celery
 
@@ -27,5 +26,4 @@ def parse_xml(self, filename):
             current_item += 1
             self.update_state(state='PROGRESS', meta={'status': True, 'current': current_item})
 
-    os.remove(filename)
     return {'status': True, 'current': current_item, 'fulness': sum(fulness)/current_item}

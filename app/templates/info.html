@@ -23,6 +23,6 @@
 {% block js %}
     <script src="{{ url_for('static', filename='info.js') }}"></script>
     <script>
-        task_status_poller('{{ url_for('status', task_id=task_id) }}');
+        task_status_poller('{{ url_for('views.status', task_id=task_id) }}');
     </script>
 {% endblock %}

@@ -11,4 +11,9 @@ app.secret_key = app.config['SECRET_KEY']
 celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
 celery.conf.update(app.config)
 
-from app import views
+from app.views import views as views_blueprint
+
+app.register_blueprint(views_blueprint)
+
+if __name__ == '__main__':
+    app.run()

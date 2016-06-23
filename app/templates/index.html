@@ -3,7 +3,7 @@
 {% block content %}
     <h1>XML parser</h1>
 
-    <form class="form-inline" enctype="multipart/form-data" method="POST" action="{{ url_for('index') }}">
+    <form class="form-inline" enctype="multipart/form-data" method="POST" action="{{ url_for('views.index') }}">
         <div class="form-group">
             <input type="file" id="xml" name="xml"/>
         </div>
